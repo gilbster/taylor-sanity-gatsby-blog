@@ -1,4 +1,4 @@
-# Blog with Gatsby
+# Taylor's Blog with Gatsby and Sanity.io
 
 _Fully customizable blog template with a React.js front-end._
 
