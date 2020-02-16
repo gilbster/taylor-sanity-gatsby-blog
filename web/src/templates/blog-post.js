@@ -57,6 +57,10 @@ export const query = graphql`
     }
   }
 `
+const disqusConfig = {
+  shortname: process.env.GATSBY_DISQUS_NAME,
+  config: { identifier: slug, title },
+}
 
 const BlogPostTemplate = props => {
   const {data, errors} = props
@@ -73,14 +77,9 @@ const BlogPostTemplate = props => {
       )}
 
       {post && <BlogPost {...post} />}
-      <DiscussionEmbed {...disqusConfig} />
+      {post && <DiscussionEmbed {...disqusConfig} />}
     </Layout>
   )
-}
-
-const disqusConfig = {
-  shortname: process.env.GATSBY_DISQUS_NAME,
-  config: { identifier: slug, title },
 }
 
 export default BlogPostTemplate
