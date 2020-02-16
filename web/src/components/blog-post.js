@@ -5,8 +5,14 @@ import {imageUrlFor} from '../lib/image-url'
 import PortableText from './portableText'
 import Container from './container'
 import AuthorList from './author-list'
+import { DiscussionEmbed } from 'disqus-react'
 
 import styles from './blog-post.module.css'
+
+const disqusConfig = {
+  shortname: process.env.GATSBY_DISQUS_NAME,
+  config: { identifier: slug, title },
+}
 
 function BlogPost (props) {
   const {_rawBody, authors, categories, title, mainImage, publishedAt} = props
@@ -53,6 +59,7 @@ function BlogPost (props) {
           </aside>
         </div>
       </Container>
+      <DiscussionEmbed {...disqusConfig} />
     </article>
   )
 }
