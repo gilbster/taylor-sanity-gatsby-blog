@@ -6,6 +6,7 @@ import BlogPost from '../components/blog-post'
 import SEO from '../components/seo'
 import Layout from '../containers/layout'
 import {toPlainText} from '../lib/helpers'
+import { DiscussionEmbed } from 'disqus-react'
 
 export const query = graphql`
   query BlogPostTemplateQuery($id: String!) {
@@ -72,8 +73,14 @@ const BlogPostTemplate = props => {
       )}
 
       {post && <BlogPost {...post} />}
+      <DiscussionEmbed {...disqusConfig} />
     </Layout>
   )
+}
+
+const disqusConfig = {
+  shortname: process.env.GATSBY_DISQUS_NAME,
+  config: { identifier: slug, title },
 }
 
 export default BlogPostTemplate
